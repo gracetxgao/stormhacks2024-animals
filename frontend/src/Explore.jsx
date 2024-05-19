@@ -1,5 +1,5 @@
 import axios from 'axios'
-
+import Form from 'react-bootstrap/Form';
 import Animal from "./Animal"
 import Container from 'react-bootstrap/Container';
 
@@ -24,7 +24,15 @@ const Explore = () => {
     return (
         <Container fluid>
             <p>explore</p>
-            <Animal name="panda" location="china" image="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Grosser_Panda.JPG/1599px-Grosser_Panda.JPG"/>
+            <Form className="w-100">
+                <Form.Group controlId="exampleForm.ControlInput1">
+                    <Form.Label>Search</Form.Label>
+                    <Form.Control type="email" placeholder="ex. panda" />
+                </Form.Group>
+            </Form>
+            <Animal name="panda" location="china" color="F6E1C1" image="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Grosser_Panda.JPG/1599px-Grosser_Panda.JPG"/>
+            <Animal name="dog" location="canada" color="DCF6C1"  image="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Grosser_Panda.JPG/1599px-Grosser_Panda.JPG"/>
+            <Animal name="chicken" location="nuggets" color="F5E0FF"  image="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Grosser_Panda.JPG/1599px-Grosser_Panda.JPG"/>
         </Container>
     )
 }
