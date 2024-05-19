@@ -91,7 +91,7 @@ const Chatbox = (props) => {
             <ChatContainer>       
                 <MessageList 
                 scrollBehavior="smooth" 
-                typingIndicator={isTyping ? <TypingIndicator content="Fu Bao is typing" /> : null}
+                typingIndicator={isTyping ? <TypingIndicator content="Typing..." /> : null}
                 >
                 {messages.map((m, i) => {
                     console.log(m)
