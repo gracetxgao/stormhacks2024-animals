@@ -4,10 +4,12 @@ import Row from 'react-bootstrap/Row';
 import { useState } from 'react';
 import Button from 'react-bootstrap/esm/Button';
 import ProgressBar from 'react-bootstrap/ProgressBar';
+import Chat from './Chat';
+import Chatbox from './Chatbox';
 
 
 const Animal = (props) => {
-    const { name, location, image, color } = props;
+    const { name, location, image, color, animal } = props;
     const [expand, setExpand] = useState(false)
 
     const handleSeeAll = () => {
@@ -44,6 +46,7 @@ const Animal = (props) => {
                         <Row className="m-5">
                             <ProgressBar now={60} />
                         </Row>
+                        <Chatbox name={name} animal={animal}/>
                     </div>
                 }
             </Container>
