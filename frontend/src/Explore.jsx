@@ -6,17 +6,23 @@ import 'bootstrap/dist/css/bootstrap.css';
 import React, { useState, useEffect } from 'react';
 
 const Explore = () => {
-    let animals = []
+    const [animals, setAnimals] = useState([])
+    const [filterAnimals, setFilterAnimals] = useState([])
     const [imageSrc, setImageSrc] = useState([]);
+    const [searchInput, setSearchInput] = useState('');
 
     // Initialize basic info when screen loaded
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await loadBasicInfo()
-                animals=response.animals
+                // const temp = response.animals.slice()
+                // console.log(temp)
+                console.log(response.animals)
+                setAnimals(response.animals)
+                setFilterAnimals(response.animals)
                 console.log(animals)
-                loadThumbnails()
+                loadThumbnails(response.animals.slice())
             } catch (error) {
                 console.log(error)
             }
@@ -33,16 +39,16 @@ const Explore = () => {
         }
     }
 
-    const loadThumbnails = async () => {
+    const loadThumbnails = async (animals) => {
         for (let i = 0; i < animals.length; i++) {
-            getThumbnailFromIndex(i)
+            getThumbnailFromIndex(animals, i)
         }
     }
 
-    const getThumbnailFromIndex = async (index) => {
+    const getThumbnailFromIndex = async (animals, index) => {
         try {
             const curAnimal = animals[index]
-            console.log(curAnimal)
+            // console.log(curAnimal)
             const { thumbnail } = curAnimal
             const response = await axios.post('http://localhost:5000/getThumbnail', {thumbnail: thumbnail})
             
@@ -58,17 +64,26 @@ const Explore = () => {
     }
 
     const searchHandler = (event) => {
-        // console.log(event.target.value)
         let input = event.target.value.toLowerCase()
-        console.log(input)
+
+        setSearchInput(input)
+
+        let clone = animals.slice()
+        let tempArr = []
 
         for (let i = 0; i < animals.length; i++) {
-
+            if (animals[i].name.toLowerCase().includes(searchInput) ||
+             animals[i].type.toLowerCase().includes(searchInput)) {
+                tempArr.push(clone[i])
+            }
         }
+        setFilterAnimals(tempArr)
+
+        console.log(tempArr)
     }
 
     useEffect(() => {
-        console.log(imageSrc);
+        // console.log(imageSrc);
     }, [imageSrc]);
 
     return (
@@ -83,11 +98,11 @@ const Explore = () => {
                             <div style={{marginBottom:40}}></div>
                         </Form.Group>
                     </Form>
-                    <Animal name="fu bao" location="china" color="F6E1C1" highlightColor="F0C490" animal="panda" image="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Grosser_Panda.JPG/1599px-Grosser_Panda.JPG"/>
+                    {/* <Animal name="fu bao" location="china" color="F6E1C1" highlightColor="F0C490" animal="panda" image="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Grosser_Panda.JPG/1599px-Grosser_Panda.JPG"/>
                     <Animal name="sandra" location="canada" color="DCF6C1" highlightColor="ACD37A" animal="gorilla" image="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Grosser_Panda.JPG/1599px-Grosser_Panda.JPG"/>
                     <Animal name="kayla" location="canada" color="F5E0FF" highlightColor="BA90F0" animal="saola" image="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Grosser_Panda.JPG/1599px-Grosser_Panda.JPG"/>
                     <Animal name="ryan" location="nuggets" color="F6E1C1" highlightColor="F0C490" animal="rhino" image="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Grosser_Panda.JPG/1599px-Grosser_Panda.JPG"/>
-                    <Animal name="percy" location="nuggets" color="DCF6C1" highlightColor="ACD37A" animal="porpoise" image="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Grosser_Panda.JPG/1599px-Grosser_Panda.JPG"/>
+                    <Animal name="percy" location="nuggets" color="DCF6C1" highlightColor="ACD37A" animal="porpoise" image="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Grosser_Panda.JPG/1599px-Grosser_Panda.JPG"/> */}
                 </div>
             </div>
         </Container>
