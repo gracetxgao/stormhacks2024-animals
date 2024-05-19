@@ -4,10 +4,12 @@ import Animal from "./Animal"
 import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.css';
 import React, { useState, useEffect } from 'react';
+import animalService from '../server/animals';
 
 const Explore = () => {
-    let animals = []
+    const [animals, setAnimals] = useState([]);
     const [imageSrc, setImageSrc] = useState([]);
+
     const Colours = [["F6E1C1", "F0C490"], ["DCF6C1", "ACD37A"], ["F5E0FF", "BA90F0"]]
 
     function random(mn, mx) {
@@ -19,13 +21,12 @@ const Explore = () => {
     }
     GFG_Fun()
 
-    // Initialize basic info when screen loaded
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await loadBasicInfo()
-                animals=response.animals
-                console.log(animals)
+                setAnimals(prev => [...prev, ...response.animals])
+                console.log(response.animals)
                 loadThumbnails()
             } catch (error) {
                 console.log(error)
@@ -52,23 +53,26 @@ const Explore = () => {
     const getThumbnailFromIndex = async (index) => {
         try {
             const curAnimal = animals[index]
-            console.log(curAnimal)
+            console.log(`animal??? ${curAnimal}`)
             const { thumbnail } = curAnimal
             const response = await axios.post('http://localhost:5001/getThumbnail', {thumbnail: thumbnail})
             
             console.log(response.data)
 
-            setImageSrc(prevState => [...prevState, response.data]);
+            const imageUri = `data:image/jpg;charset=utf-8;base64,${response.data}`
+            console.log(imageUri);
+
+            setImageSrc(prevState => [...prevState, imageUri]);
             // setImageSrc(imageSrc.push(response.data)) // Update state with the image URL
             // console.log(imageSrc)
             
         } catch (error) {
-            console.log(error.response.data)
+            console.log(error.response)
         }
     }
 
     const searchHandler = (event) => {
-        // console.log(event.target.value)
+        console.log(event.target.value)
         let input = event.target.value.toLowerCase()
         console.log(input)
 
@@ -81,13 +85,37 @@ const Explore = () => {
         console.log(imageSrc);
     }, [imageSrc]);
 
+    const AnimalCards = animals.map((a, index) => {
+        let name = a.name
+        let location = a.location
+        let desc = a.description
+        let goal = a.donationGoal
+        let curr = a.currentDonation
+        let imageSource = imageSrc[index];
+        console.log(`ahhhhh ${a.thumbnail}`);
+        console.log(`aafasdfas dfasdf ${imageSource}`);
+
+        return (
+            <Animal
+                key={index}
+                name={name}
+                location={location}
+                description={desc}
+                donationGoal={goal}
+                currentDonation={curr}
+                image={imageSource}
+            />
+          );
+
+    })
+
     return (
         <Container className="fluid">
             <div className="row">
                 <div className="col-sm-0"></div>
                     <div className="col-sm-12" align="center">
                 <div className="col-sm-1"></div>
-                    <div className="col-sm-10" align="center">
+                <div className="col-sm-10" align="center">
                     <Form className="w-100">
                         <Form.Group controlId="exampleForm.ControlInput1">
                             <Form.Label style={{marginTop: 100, marginBottom: 30, fontSize: 40, fontWeight: "bold", width: "200px"}}>Explore!</Form.Label>
@@ -95,10 +123,7 @@ const Explore = () => {
                             <div style={{marginBottom:40}}></div>
                         </Form.Group>
                     </Form>
-                    {[...animals].map((item) => {
-                        const color = GFG_Fun();
-                        return <Animal name={item.name} location={item.location} color={color[0]} highlightColor={color[1]} animal={item.type} image={item.thumbnail} description={item.description} donationGoal={item.donationGoal} currentDonation={item.currentDonation}/>
-                    })};
+                    {AnimalCards}
                     {/* <Animal name="fu bao" location="china" color="F6E1C1" highlightColor="F0C490" animal="panda" image="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Grosser_Panda.JPG/1599px-Grosser_Panda.JPG"/>
                     <Animal name="sandra" location="canada" color="DCF6C1" highlightColor="ACD37A" animal="gorilla" image="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Grosser_Panda.JPG/1599px-Grosser_Panda.JPG"/>
                     <Animal name="kayla" location="canada" color="F5E0FF" highlightColor="BA90F0" animal="saola" image="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Grosser_Panda.JPG/1599px-Grosser_Panda.JPG"/>
