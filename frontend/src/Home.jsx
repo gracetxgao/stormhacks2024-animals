@@ -6,6 +6,7 @@ import { motion, useAnimation } from 'framer-motion';
 import 'bootstrap/dist/css/bootstrap.css';
 import './Home.css';
 import Explore from './Explore';
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
     const controls = useAnimation();
@@ -49,6 +50,11 @@ const Home = () => {
         }
     }, [zoomCompleted]);
 
+    const navigate = useNavigate()
+    const gotToNewPage=()=>{
+        navigate("/Login");
+      }
+
     return (
         <>
             <div className="fullscreen-bg">
@@ -64,6 +70,9 @@ const Home = () => {
                 <nav className="navbar navbar-expand-sm bg-dark navbar-dark sticky-top" style={{backgroundColor: "#f5dbdb !important"}}>
                     <div className="container-fluid">
                         <Link className="navbar-brand" to="#">Sticky top</Link>
+                        <motion.button class="login-button" onClick={() => gotToNewPage()}
+                            whileHover = {{scale : 1.05}} whileTap = {{scale : 0.95}}
+                        >Login</motion.button>
                     </div>
                 </nav>
             )}
