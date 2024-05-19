@@ -70,7 +70,7 @@ const Home = () => {
                 <nav className="navbar navbar-expand-sm bg-dark navbar-dark sticky-top" style={{backgroundColor: "#fc7e7e !important"}}>
                     <div className="container-fluid">
                         <Link className="navbar-brand" to="#">Sticky top</Link>
-                        <motion.button class="login-button" onClick={() => gotToNewPage()}
+                        <motion.button className="login-button" onClick={() => gotToNewPage()}
                             whileHover = {{scale : 1.05}} whileTap = {{scale : 0.95}}
                         >Login</motion.button>
                     </div>
