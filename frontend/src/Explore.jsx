@@ -23,7 +23,7 @@ const Explore = () => {
     }
 
     return (
-        <div className="fluid">
+        <Container className="fluid">
             <p>explore</p>
             <Form className="w-100">
                 <Form.Group controlId="exampleForm.ControlInput1">
