@@ -6,9 +6,10 @@ import Button from 'react-bootstrap/Button';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import Chatbox from './Chatbox.jsx';
 import { animate, motion, useInView } from 'framer-motion';
+import locationImage from '../src/assets/location.png';
 
 const Animal = (props) => {
-    const { name, location, image, color, animal } = props;
+    const { name, location, image, color, highlightColor, animal } = props;
     const [expand, setExpand] = useState(false);
     const [hasBeenInView, setHasBeenInView] = useState(false);
     const ref = useRef(null);
@@ -47,10 +48,20 @@ const Animal = (props) => {
                             </div>
                         </Col>
                         <Col sm={8} className="text-center">
-                            <p style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>{name}</p>
-                            <p style={{ fontSize: '1.2rem' }}>{location}</p>
-                            <ProgressBar now={60} style={{ margin: '20px' }} />
-                            <ProgressBar now={60} style={{ margin: '20px' }} />
+                            <Container>
+                                <Row>
+                                    <Col>
+                                        <h3 style={{ fontSize: '1.5rem', fontWeight: 'bold', backgroundColor: `#${highlightColor}`, paddingBlock: '30px', borderRadius: '40px' }}>{name}</h3>
+                                    </Col>
+                                    <Col>
+                                        <h3 style={{ fontSize: '1.2rem', backgroundColor: `#${highlightColor}`, paddingBlock: '30px', borderRadius: '40px' }}>
+                                            <img src={locationImage} width={'10%'} style={{ marginInline: '5px'}} />
+                                            {location}
+                                        </h3>
+                                    </Col>
+                                </Row>
+                                <Row style={{ margin: '5%'}}>Fu Bao, born on July 20, 2020, at Everland Resort in South Korea, is the country's first giant panda. Beloved for her playful antics and charming personality, her name means "a treasure that brings happiness."</Row>
+                            </Container>                         
                             <motion.button onClick={handleSeeAll}
                             whileHover = {{scale : 1.05}} whileTap = {{scale : 0.95, rotate : "2.5deg"}} className="animate-button">{expand ? 'Close' : 'See All'}</motion.button>
                         </Col>
@@ -78,7 +89,10 @@ const Animal = (props) => {
                             <Row className="m-5">
                                 <ProgressBar now={60} />
                             </Row>
-                        <Chatbox name={name} animal={animal}/>
+                            <Row style={{ padding: '3%' }}>
+                                <h3>Begin a conversation with {name}!</h3>
+                                <Chatbox name={name} animal={animal}/>
+                            </Row>
                         </div>
                     )}
                 </Container>
