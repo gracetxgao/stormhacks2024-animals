@@ -67,7 +67,7 @@ const AddAnimal = () => {
         <Container fluid className="d-flex vh-100" style={{ width: '100vw' }}>
             <Row className="m-auto w-100">
                 <Col xs={10} md={8} lg={6} className="d-flex flex-column align-items-center mx-auto" style={{ maxWidth: '500px' }}>
-                    <h1 style={{ fontSize: '3rem', marginBottom: '2rem' }}>Log in</h1>
+                    <h1 style={{ fontSize: '3rem', marginBottom: '2rem' }}>Add Animal</h1>
                     <Form className="w-100">
                         <Form.Group controlId="exampleForm.ControlInput1">
                             <Form.Label>Name of animal</Form.Label>

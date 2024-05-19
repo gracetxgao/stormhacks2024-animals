@@ -3,6 +3,7 @@ const path = require('path')
 const fs = require('fs')
 const cors = require('cors')
 const multer = require('multer');
+const stream = require('stream')
 
 const app = express()
 
@@ -17,11 +18,6 @@ app.get('/getAnimalsBasic', (req, res) => {
         // console.log(data)
         return res.status(200).send(data)
     })
-})
-
-app.get('/getThumbnail', (req, res) => {
-    const fileName = req.body
-    return fs.sendFile(`assets/thumbnails/${fileName}`)
 })
 
 app.get('/getAnimalsAdvanced', (req, res) => {
@@ -53,6 +49,23 @@ app.get('*', (req, res) => {
 // For non get commands
 app.use(express.urlencoded({extended: false}))
 app.use(express.json())
+
+app.post('/getThumbnail', (req, res) => {
+    const { thumbnail } = req.body
+    // console.log(req.body)
+    const filePath = path.resolve(__dirname, "assets/thumbnails", thumbnail)
+    // console.log(filePath)
+
+    return res.sendFile(filePath)
+
+    // const r = fs.createReadStream(filePath)
+    // const ps = new stream.PassThrough()
+    // stream.pipeline(r, ps, (err) => {
+    // if (err) {
+    //     return res.status(404).send('no such file!'); 
+    // }})
+    // ps.pipe(res)
+})
 
 app.post('/login', (req, res) => {
     const name = req.body.name
