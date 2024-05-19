@@ -1,4 +1,4 @@
-import Picture1 from '../public/zooImage1.png';
+import Picture1 from './zooImage1.png';
 
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -17,7 +17,7 @@ const Home = () => {
             if (!zoomCompleted) {
                 event.preventDefault();
                 const deltaY = event.deltaY;
-                if (deltaY > 0) { // Only handle positive scroll
+                if (deltaY > 0) { 
                     setZoomFactor(prevZoomFactor => {
                         const newZoomFactor = Math.min(prevZoomFactor + deltaY / (window.innerHeight / 2), 4);
                         controls.start({
@@ -29,7 +29,7 @@ const Home = () => {
                         }
                         return newZoomFactor;
                     });
-                    window.scrollTo(0, 0); // Keep the page from scrolling
+                    window.scrollTo(0, 0); 
                 }
             }
         };
@@ -68,6 +68,7 @@ const Home = () => {
                 </nav>
             )}
             <Explore />
+            
         </>
     );
 };

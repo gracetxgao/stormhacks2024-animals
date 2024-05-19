@@ -4,10 +4,8 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import ProgressBar from 'react-bootstrap/ProgressBar';
-import Chatbox from './Chatbox';
-import { motion, useInView } from 'framer-motion';
-import { animate, motion, useInView, useMotionValue } from 'framer-motion';
-import useMeasure from "react-use-measure";
+import Chatbox from './Chatbox.jsx';
+import { animate, motion, useInView } from 'framer-motion';
 
 const Animal = (props) => {
     const { name, location, image, color, animal } = props;
