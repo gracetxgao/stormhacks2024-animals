@@ -61,11 +61,12 @@ app.post('/login', (req, res) => {
             res.status(404).send('users.json file not found')
         }
     
-        const parsed = JSON.parse(data)
+        const { users } = JSON.parse(data)
 
-        // console.log(parsed)
-        for (let i = 0; i < parsed.length; i++) {
-            if (name === parsed[i].name) {
+        console.log(users)
+        for (let i = 0; i < users.length; i++) {
+            console.log(i)
+            if (name === users[i].name) {
                 return res.status(200).send('login successful')
             }
         }
