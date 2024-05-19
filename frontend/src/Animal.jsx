@@ -43,7 +43,7 @@ const Animal = (props) => {
                 <Container fluid style={{ backgroundColor: `#${color}`, borderRadius: '20px', maxWidth: '90vw' }}>
                     <Row className="d-flex justify-content-center align-items-center" style={{ margin: '30px', paddingBlock: '30px' }}>
                         <Col sm={4} className="d-flex justify-content-center">
-                            <div style={{ width: '400px', height: '300px', overflow: 'hidden', borderRadius: '50%' }}>
+                            <div style={{ width: '400px', height: '300px', overflow: 'hidden', borderRadius: '50%' , borderColor: `#${highlightColor}`, border: '5px solid' }}>
                                 <img src={image} alt={name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                             </div>
                         </Col>
@@ -62,8 +62,8 @@ const Animal = (props) => {
                                 </Row>
                                 <Row style={{ margin: '5%'}}>Fu Bao, born on July 20, 2020, at Everland Resort in South Korea, is the country's first giant panda. Beloved for her playful antics and charming personality, her name means "a treasure that brings happiness."</Row>
                             </Container>                         
-                            <motion.button onClick={handleSeeAll} style={{ backgroundColor: '#CCE2F8', color: 'black' }}
-                            whileHover = {{scale : 1.05}} whileTap = {{scale : 0.95, rotate : "2.5deg"}} className="animate-button">{expand ? 'Close' : 'See All'}</motion.button>
+                            <motion.button onClick={handleSeeAll} style={{ backgroundColor: 'white', color: `#${highlightColor}`, borderColor: `#${highlightColor}`, border: "4px solid", borderRadius: "15px"}}
+                            whileHover = {{scale : 1.05, backgroundColor: "#F5F5F5"}} whileTap = {{scale : 0.95, rotate : "2.5deg"}} className="animate-button">{expand ? 'Close' : 'See All'}</motion.button>
                         </Col>
                     </Row>
                     {expand && (
@@ -80,7 +80,7 @@ const Animal = (props) => {
                                     {[...Images].map((item, idx) => (
                                         <motion.iframe 
                                         whileHover = {{scale : 1.05}} width="20%" height="100%" src="https://www.youtube.com/embed/sFY22hgbKYg" title="3-Second Animated Medical Laboratory Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
-                                        style={{ width: '20%', height: '100%', marginInline: '20px', borderRadius: '10%' }}></motion.iframe>
+                                        style={{ width: '20%', height: '100%', marginInline: '20px', borderRadius: '10%', borderColor: 'black', border: '5px solid'}}></motion.iframe>
                                     ))}
                                     </div>
                                     </div>
