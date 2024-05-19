@@ -8,6 +8,16 @@ import React, { useState, useEffect } from 'react';
 const Explore = () => {
     let animals = []
     const [imageSrc, setImageSrc] = useState([]);
+    const Colours = [["F6E1C1", "F0C490"], ["DCF6C1", "ACD37A"], ["F5E0FF", "BA90F0"]]
+
+    function random(mn, mx) {
+        return Math.random() * (mx - mn) + mn;
+    }
+    
+    function GFG_Fun() {
+        return (Colours[(Math.floor(random(1, 4))) - 1]);
+    }
+    GFG_Fun()
 
     // Initialize basic info when screen loaded
     useEffect(() => {
@@ -85,9 +95,10 @@ const Explore = () => {
                             <div style={{marginBottom:40}}></div>
                         </Form.Group>
                     </Form>
-                    {[...animals].map((item) => (
-                        <Animal name={item.name} location={item.location} color="F6E1C1" highlightColor="F0C490" animal={item.type} image={item.thumbnail} description={item.description} donationGoal={item.donationGoal} currentDonation={item.currentDonation}/>
-                    ))};
+                    {[...animals].map((item) => {
+                        const color = GFG_Fun();
+                        return <Animal name={item.name} location={item.location} color={color[0]} highlightColor={color[1]} animal={item.type} image={item.thumbnail} description={item.description} donationGoal={item.donationGoal} currentDonation={item.currentDonation}/>
+                    })};
                     {/* <Animal name="fu bao" location="china" color="F6E1C1" highlightColor="F0C490" animal="panda" image="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Grosser_Panda.JPG/1599px-Grosser_Panda.JPG"/>
                     <Animal name="sandra" location="canada" color="DCF6C1" highlightColor="ACD37A" animal="gorilla" image="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Grosser_Panda.JPG/1599px-Grosser_Panda.JPG"/>
                     <Animal name="kayla" location="canada" color="F5E0FF" highlightColor="BA90F0" animal="saola" image="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Grosser_Panda.JPG/1599px-Grosser_Panda.JPG"/>
