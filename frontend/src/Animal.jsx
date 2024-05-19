@@ -4,7 +4,6 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import ProgressBar from 'react-bootstrap/ProgressBar';
-import Chat from './Chat';
 import Chatbox from './Chatbox';
 import { motion, useInView } from 'framer-motion';
 
