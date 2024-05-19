@@ -24,9 +24,9 @@ const Explore = () => {
 
     return (
         <Container className="fluid">
-            <div class="row">
-                <div class="col-sm-2"></div>
-                    <div class="col-sm-8" align="center">
+            <div className="row">
+                <div className="col-sm-2"></div>
+                    <div className="col-sm-8" align="center">
                     <Form className="w-100">
                         <Form.Group controlId="exampleForm.ControlInput1">
                             <Form.Label style={{marginTop: 100, marginBottom: 30, fontSize: 40, fontWeight: "bold"}}>Explore!</Form.Label>
