@@ -20,7 +20,7 @@ const AddAnimal = () => {
     const attemptAddAnimal = async (info) => {
         try {
             // console.log(info)
-            const { data } = await axios.post('http://localhost:5000/addAnimal', info)
+            const { data } = await axios.post('http://localhost:5001/addAnimal', info)
             return data
         }   catch (error) {
             return error.response.data
@@ -29,7 +29,7 @@ const AddAnimal = () => {
 
     const attemptUploadThumbnail = async (formData) => {
         try {
-            const { data } = await axios.post('http://localhost:5000/uploadThumbnail', formData)
+            const { data } = await axios.post('http://localhost:5001/uploadThumbnail', formData)
             return data
         } catch (error) {
             return error.response.data

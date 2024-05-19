@@ -119,6 +119,6 @@ app.post('/uploadThumbnail', upload.single('file'), (req, res) => {
     res.status(200).json({ message: 'File uploaded successfully', fileName: req.file.originalname });
 });
 
-app.listen(5000, () => {
-    console.log('Server started on http://localhost:5000')
+app.listen(5001, () => {
+    console.log('Server started on http://localhost:5001')
 })
