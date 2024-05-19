@@ -9,7 +9,7 @@ import { animate, motion, useInView } from 'framer-motion';
 import locationImage from '../src/assets/location.png';
 
 const Animal = (props) => {
-    const { name, location, image, color, highlightColor, animal, description, donationGoal, currentDonations} = props;
+    const { name, location, image, color, highlightColor, type, description, donationGoal, currentDonations} = props;
     const [expand, setExpand] = useState(false);
     const [hasBeenInView, setHasBeenInView] = useState(false);
     const ref = useRef(null);
@@ -125,7 +125,7 @@ const Animal = (props) => {
                             </Row>
                             <Row style={{ paddingBlock: '40px' }}>
                                 <h3>Begin a conversation with {name}!</h3>
-                                <Chatbox name={name} animal={animal}/>
+                                <Chatbox name={name} type={type}/>
                             </Row>
                         </div>
                         

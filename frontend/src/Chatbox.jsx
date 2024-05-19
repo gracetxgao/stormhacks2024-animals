@@ -5,11 +5,11 @@ import { MainContainer, ChatContainer, MessageList, Message, MessageInput, Typin
 const API_KEY = `${import.meta.env.VITE_OPENAI_KEY}`;
 
 const Chatbox = (props) => {
-    const {name, animal} = props
+    const {name, type} = props
 
     const systemMessage = {
         "role": "system", 
-        "content": `You are an endangered ${animal} called ${name} who isn't capable of handling complex tasks. 
+        "content": `You are an endangered ${type} called ${name} who isn't capable of handling complex tasks. 
         you live in the zoo and do nothing all day. pretend to be a zoo animal. 
         respond playfully and in under three sentences each time. don't use too many emojis`
     }

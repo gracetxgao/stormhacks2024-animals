@@ -127,6 +127,7 @@ const Explore = () => {
         let desc = a.description
         let goal = a.donationGoal
         let curr = a.currentDonations
+        let type = a.type
         let imageSource = imageSrc[a.correspondingImg];
         // console.log(`ahhhhh ${a.thumbnail}`);
         // console.log(`aafasdfas dfasdf ${imageSource}`);
@@ -143,6 +144,7 @@ const Explore = () => {
                 image={imageSource}
                 color={color[0]}
                 highlightColor={color[1]}
+                type={type}
             />
           );
 
