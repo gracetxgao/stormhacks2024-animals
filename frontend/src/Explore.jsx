@@ -9,6 +9,7 @@ import animalService from '../server/animals';
 const Explore = () => {
     const [animals, setAnimals] = useState([])
     const [filterAnimals, setFilterAnimals] = useState([])
+    const [searchInput, setSearchInput] = useState([])
     const [imageSrc, setImageSrc] = useState([]);
 
     const Colours = [["F6E1C1", "F0C490"], ["DCF6C1", "ACD37A"], ["F5E0FF", "BA90F0"]]
@@ -30,12 +31,9 @@ const Explore = () => {
                 // console.log(temp)
                 console.log(response.animals)
                 setAnimals(response.animals)
-                setFilterAnimals(response.animals)
-                console.log(animals)
+                setFilterAnimals(response.animals.slice())
                 loadThumbnails(response.animals.slice())
-                setAnimals(prev => [...prev, ...response.animals])
-                console.log(response.animals)
-                loadThumbnails()
+                // setAnimals(prev => [...prev, ...response.animals])
             } catch (error) {
                 console.log(error)
             }
@@ -65,10 +63,10 @@ const Explore = () => {
             const { thumbnail } = curAnimal
             const response = await axios.post('http://localhost:5001/getThumbnail', {thumbnail: thumbnail})
             
-            console.log(response.data)
+            // console.log(response.data)
 
             const imageUri = `data:image/jpg;charset=utf-8;base64,${response.data}`
-            console.log(imageUri);
+            // console.log(imageUri);
 
             setImageSrc(prevState => [...prevState, imageUri]);
             // setImageSrc(imageSrc.push(response.data)) // Update state with the image URL
@@ -80,7 +78,7 @@ const Explore = () => {
     }
 
     const searchHandler = (event) => {
-        console.log(event.target.value)
+        // console.log(event.target.value)
         let input = event.target.value.toLowerCase()
 
         setSearchInput(input)
@@ -110,8 +108,8 @@ const Explore = () => {
         let goal = a.donationGoal
         let curr = a.currentDonation
         let imageSource = imageSrc[index];
-        console.log(`ahhhhh ${a.thumbnail}`);
-        console.log(`aafasdfas dfasdf ${imageSource}`);
+        // console.log(`ahhhhh ${a.thumbnail}`);
+        // console.log(`aafasdfas dfasdf ${imageSource}`);
         const color = GFG_Fun();
 
         return (
