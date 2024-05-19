@@ -37,7 +37,7 @@ const AddAnimal = () => {
     }
 
     const formSubmit = (event) => {
-        event.preventDefault();
+        // event.preventDefault();
 
         const formData = new FormData();
         formData.append('file', file);
@@ -91,21 +91,21 @@ const AddAnimal = () => {
                             <Form.Label>Donation goal</Form.Label>
                             <Form.Control type="description" placeholder="ex. $3500" />    
                         </Form.Group>
-                        <Form.Group controlId="exampleForm.ControlInput6">
+                        <Form.Group controlId="exampleForm.ControlInput6" style={{marginBottom: "15px"}}>
                             <Form.Label>Current donations</Form.Label>
                             <Form.Control type="description" placeholder="ex. $2500" />  
                         </Form.Group>
                         <Form.Group controlId="exampleForm.ControlInput7" style={{marginBottom: "15px"}}>
+                            <Form.Label>Attach image below</Form.Label>
                             <input type='file' className="thumbnail" onChange={handleFileChange} />
                         </Form.Group>
                         <div className="d-flex justify-content-center">
-                            {/* <Link to="/explore"> */}
                             <motion.button 
-                                 whileHover = {{scale : 1.05, backgroundColor: "#F5F5F5"}}
-                                 whileTap = {{scale: 0.95}}
-                                 className="mt-3" onClick={formSubmit}
-                                 style={{backgroundColor: "white", borderColor: "#F0C490", border: "5px solid", color: "#F0C490", borderRadius: "5px", height: "50px", fontSize: "20px"}}>Start Exploring</motion.button>
-                            {/* </Link> */}
+                                whileHover = {{scale : 1.05, backgroundColor: "#F5F5F5"}}
+                                whileTap = {{scale: 0.95}}
+                                className="m-3" onClick={formSubmit}
+                                style={{backgroundColor: "white", borderColor: "#F0C490", border: "5px solid", color: "#F0C490", borderRadius: "5px", height: "50px", fontSize: "20px"}}>Add animal</motion.button>
+                            <Link className="mt-3" to="/explore"><Button style={{backgroundColor: "white", borderColor: "#F0C490", border: "5px solid", color: "#F0C490", borderRadius: "5px", height: "50px", fontSize: "20px"}}>Start exploring</Button></Link>
                         </div>
                     </Form>
                 </Col>
