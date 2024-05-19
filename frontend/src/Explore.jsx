@@ -126,7 +126,7 @@ const Explore = () => {
         let location = a.location
         let desc = a.description
         let goal = a.donationGoal
-        let curr = a.currentDonation
+        let curr = a.currentDonations
         let imageSource = imageSrc[a.correspondingImg];
         // console.log(`ahhhhh ${a.thumbnail}`);
         // console.log(`aafasdfas dfasdf ${imageSource}`);
@@ -139,7 +139,7 @@ const Explore = () => {
                 location={location}
                 description={desc}
                 donationGoal={goal}
-                currentDonation={curr}
+                currentDonations={curr}
                 image={imageSource}
                 color={color[0]}
                 highlightColor={color[1]}

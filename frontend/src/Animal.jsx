@@ -9,12 +9,14 @@ import { animate, motion, useInView } from 'framer-motion';
 import locationImage from '../src/assets/location.png';
 
 const Animal = (props) => {
-    const { name, location, image, color, highlightColor, animal, description, donationGoal, currentDonation} = props;
+    const { name, location, image, color, highlightColor, animal, description, donationGoal, currentDonations} = props;
     const [expand, setExpand] = useState(false);
     const [hasBeenInView, setHasBeenInView] = useState(false);
     const ref = useRef(null);
     const isInView = useInView(ref, { once: false });
-    
+    const donations = 100 * (parseInt(String(currentDonations))/parseInt(String(donationGoal)))
+
+    console.log(currentDonations, donationGoal, donations);
 
     const Images = [
         image,
@@ -118,8 +120,8 @@ const Animal = (props) => {
                                 </Col>
                             </Row>
                             <Row className="m-5">
-                                    <h2>Donations so far</h2>
-                                <ProgressBar now={100 * (Number(currentDonation)/Number(donationGoal))} />
+                                <h2>Donations so far</h2>
+                                <ProgressBar now={100 * (Number(currentDonations)/Number(donationGoal))} />
                             </Row>
                             <Row style={{ paddingBlock: '40px' }}>
                                 <h3>Begin a conversation with {name}!</h3>
