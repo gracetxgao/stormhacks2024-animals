@@ -7,9 +7,10 @@ const Home = () => {
         <>
             <Container fluid>
                 <p>home</p>
-                <Link to="/animals"><Button>scroll down animals</Button></Link>
+                <Link to="/login">
+                    <Button>get started</Button>
+                </Link>
             </Container>
-            
         </>
     )
 }

@@ -1,7 +1,12 @@
+import Container from 'react-bootstrap/Container';
+
 const Animal = (props) => {
-    const {name, location} = props
+    const {name, location, image} = props
     return (
-        <p>animals</p>
+        <Container>
+            <p>name: {name}</p>
+            <p>location: {location}</p>
+        </Container>
     )
 }
 
