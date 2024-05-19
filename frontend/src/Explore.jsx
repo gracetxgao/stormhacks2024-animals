@@ -94,6 +94,7 @@ const Explore = () => {
         let imageSource = imageSrc[index];
         console.log(`ahhhhh ${a.thumbnail}`);
         console.log(`aafasdfas dfasdf ${imageSource}`);
+        const color = GFG_Fun();
 
         return (
             <Animal
@@ -104,6 +105,8 @@ const Explore = () => {
                 donationGoal={goal}
                 currentDonation={curr}
                 image={imageSource}
+                color={color[0]}
+                highlightColor={color[1]}
             />
           );
 
