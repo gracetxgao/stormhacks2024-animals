@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useAnimation } from 'framer-motion';
 import 'bootstrap/dist/css/bootstrap.css';
+import './Home.css';
 
 const Home = () => {
     const controls = useAnimation();
