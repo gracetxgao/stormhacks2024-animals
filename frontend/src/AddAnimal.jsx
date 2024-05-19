@@ -47,6 +47,7 @@ const AddAnimal = () => {
                       type: document.getElementById('exampleForm.ControlInput3').value,
                       description: document.getElementById('exampleForm.ControlInput4').value,
                       donationGoal: document.getElementById('exampleForm.ControlInput5').value,
+                      currentDonations: document.getElementById('exampleForm.ControlInput6').value,
                       thumbNail: file.name}
         let emptyProperty = false
         for(var key in input) {
@@ -90,10 +91,14 @@ const AddAnimal = () => {
                             <Form.Label>Donation goal</Form.Label>
                             <Form.Control type="description" placeholder="ex. $3500" />    
                         </Form.Group>
+                        <Form.Group controlId="exampleForm.ControlInput6">
+                            <Form.Label>Current donations</Form.Label>
+                            <Form.Control type="description" placeholder="ex. $2500" />  
+                        </Form.Group>
+                        <Form.Group controlId="exampleForm.ControlInput7">
                         <Form.Group controlId="exampleForm.ControlInput6" style={{marginBottom: "15px"}}>
                             <input type='file' className="thumbnail" onChange={handleFileChange} />
                         </Form.Group>
-                        
                         <div className="d-flex justify-content-center">
                             {/* <Link to="/explore"> */}
                             <motion.button 
