@@ -67,7 +67,8 @@ const Animal = (props) => {
                                     <div class="slide-track">
 
                                     {[...Images].map((item, idx) => (
-                                        <img class="slide" src={image} alt={name} style={{ width: '20%', height: '100%', marginInline: '25px', borderRadius: '10%' }} />
+                                        <iframe width="20%" height="100%" src="https://www.youtube.com/embed/sFY22hgbKYg" title="3-Second Animated Medical Laboratory Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
+                                        style={{ width: '20%', height: '100%', marginInline: '20px', borderRadius: '10%' }}></iframe>
                                     ))}
                                     </div>
                                     </div>
