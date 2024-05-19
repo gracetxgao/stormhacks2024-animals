@@ -28,9 +28,9 @@ app.use(express.json())
 
 app.post('/getThumbnail', (req, res) => {
     const { thumbnail } = req.body
-    // console.log(req.body)
+    console.log(thumbnail)
     const filePath = path.resolve(__dirname, "assets/thumbnails", thumbnail)
-    // console.log(filePath)
+    console.log(filePath)
 
     fs.readFile(filePath, (err, data) => {
         if (err) {

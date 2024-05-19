@@ -48,7 +48,7 @@ const AddAnimal = () => {
                       description: document.getElementById('exampleForm.ControlInput4').value,
                       donationGoal: document.getElementById('exampleForm.ControlInput5').value,
                       currentDonations: document.getElementById('exampleForm.ControlInput6').value,
-                      thumbNail: file.name}
+                      thumbnail: file.name}
         let emptyProperty = false
         for(var key in input) {
             if(input[key] === "") {
