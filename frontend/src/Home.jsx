@@ -51,9 +51,13 @@ const Home = () => {
     }, [zoomCompleted]);
 
     const navigate = useNavigate()
-    const gotToNewPage=()=>{
+    const gotToLogin=()=>{
         navigate("/Login");
-      }
+    }
+
+    const gotToAdd=()=>{
+    navigate("/add-animal");
+    }
 
     return (
         <>
@@ -70,10 +74,13 @@ const Home = () => {
             {zoomCompleted && (
                 <nav className="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
                     <div className="container-fluid">
-                        <Link className="navbar-brand" to="#">Sticky top</Link>
-                        <motion.button className="login-button" onClick={() => gotToNewPage()}
+                        <Link className="navbar-brand" to="#">Stranger Endanger</Link>
+                        <motion.button className="login-button" onClick={() => gotToLogin()}
                             whileHover = {{scale : 1.05}} whileTap = {{scale : 0.95}}
                         >Login</motion.button>
+                        <motion.button className="add-button" onClick={() => gotToAdd()}
+                        whileHover = {{scale : 1.05}} whileTap = {{scale : 0.95}}
+                    >Add Animal</motion.button>
                     </div>
                 </nav>
             
