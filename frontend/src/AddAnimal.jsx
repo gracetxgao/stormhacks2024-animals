@@ -99,13 +99,13 @@ const AddAnimal = () => {
                             <input type='file' className="thumbnail" onChange={handleFileChange} />
                         </Form.Group>
                         <div className="d-flex justify-content-center">
-                            {/* <Link to="/explore"> */}
+                        <Link to="/">
                             <motion.button 
-                                 whileHover = {{scale : 1.05, backgroundColor: "#F5F5F5"}}
-                                 whileTap = {{scale: 0.95}}
-                                 className="mt-3" onClick={formSubmit}
-                                 style={{backgroundColor: "white", borderColor: "#F0C490", border: "5px solid", color: "#F0C490", borderRadius: "5px", height: "50px", fontSize: "20px"}}>Start Exploring</motion.button>
-                            {/* </Link> */}
+                            whileHover = {{scale : 1.05, backgroundColor: "#F5F5F5"}}
+                            whileTap = {{scale: 0.95}}
+                            className="mt-3" onClick={formSubmit}
+                            style={{backgroundColor: "white", borderColor: "#BA90F0", border: "5px solid", color: "#BA90F0", borderRadius: "5px", height: "50px", fontSize: "20px"}}>Start Exploring</motion.button>
+                        </Link>
                         </div>
                     </Form>
                 </Col>
