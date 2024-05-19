@@ -1,9 +1,16 @@
 body {
-    background-color: #b3e5fc; /* Pastel light blue */
     margin: 0;
     padding: 0;
     overflow-x: hidden; /* Prevent horizontal scrolling */
   }
+
+  .top-section {
+    background-color: #b3e5fc; /* Pastel blue */
+}
+
+.bottom-section {
+    background-color: #ffffff; /* White */
+}
   
   .fullscreen-bg {
     position: relative;
