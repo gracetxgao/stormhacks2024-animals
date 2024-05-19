@@ -20,8 +20,28 @@ const Explore = () => {
                 console.log(error)
             }
         }
-        fetchData()
+        // fetchData()
+        const test = async () => {
+            try {
+                const response = await axios.post('http://localhost:5000/getThumbnail', {thumbnail: 'jaeyoung.txt'})
+                const blob = new Blob([response.data], { type: "text" });
+
+                // To see blob
+                await blob.text().then((response) => {console.log(response)})
+                const imageUrl = URL.createObjectURL(blob); // Create a local URL for the image blob
+                console.log(imageUrl)
+                // imageSrc.push(imageUrl)
+                // setImageSrc(prevState => [...prevState, imageUrl]);
+                // // setImageSrc(imageSrc.push(imageUrl)) // Update state with the image URL
+                // console.log(imageSrc)
+            } catch (error) {
+
+            }
+        }
+        test()
     },[])
+
+
 
     const loadBasicInfo = async () => {
         try {
@@ -47,7 +67,7 @@ const Explore = () => {
             const blob = new Blob([response.data], { type: "image/jpeg" });
 
             // To see blob
-            // await blob.text().then((response) => {console.log(response)})
+            await blob.text().then((response) => {console.log(response)})
             const imageUrl = URL.createObjectURL(blob); // Create a local URL for the image blob
             console.log(imageUrl)
             imageSrc.push(imageUrl)
