@@ -1,4 +1,4 @@
-import Picture1 from './zooImage1.png';
+import Picture1 from './zooImage2.svg';
 
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
