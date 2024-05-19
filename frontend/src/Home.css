@@ -9,7 +9,9 @@ body {
 }
 
 .bottom-section {
-    background-color: #ffffff; /* White */
+    background-image: url("./background.png");
+    background-attachment: fixed;
+    background-size: cover;
 }
   
   .fullscreen-bg {
