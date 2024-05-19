@@ -4,9 +4,27 @@ import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.css';
 
 const Login = () => {
+    const attemptLogin = async (name) => {
+        try {
+            console.log(name)
+            const { data } = await axios.post('http://localhost:5000/login', {name: name})
+            return data
+        }   catch (error) {
+            console.log(error)
+        }
+    }
+
+    const formSubmit = (event) => {
+        // event.preventDefault();
+        var input = document.getElementById('exampleForm.ControlInput1').value
+        attemptLogin(input).then((response) => {
+            console.log(response)})
+    }
+
     return (
         <Container fluid className="d-flex vh-100" style={{ width: '100vw' }}>
             <Row className="m-auto w-100">
@@ -23,7 +41,7 @@ const Login = () => {
                         </Form.Group>
                         <div className="d-flex justify-content-center">
                             <Link to="/explore">
-                                <Button className="mt-3">Start Exploring</Button>
+                                <Button className="mt-3" onClick={formSubmit}>Start Exploring</Button>
                             </Link>
                         </div>
                     </Form>
