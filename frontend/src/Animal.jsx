@@ -1,4 +1,3 @@
-import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -16,7 +15,7 @@ const Animal = (props) => {
     }
 
     return (
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100vw', height: '100vh' }}>
+        <div style={{  top: '0', zIndex: '1' }}>
             <Container fluid style={{ backgroundColor: `#${color}`, borderRadius: '20px', maxWidth: '90vw' }}>
                 <Row className="d-flex justify-content-center align-items-center" style={{ margin: '30px'}}>
                     <Col sm={4} className="d-flex justify-content-center">
@@ -53,3 +52,4 @@ const Animal = (props) => {
 }
 
 export default Animal;
+
