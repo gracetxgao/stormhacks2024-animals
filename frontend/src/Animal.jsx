@@ -32,6 +32,36 @@ const Animal = (props) => {
         }
     }, [isInView]);
 
+    const hexToRgb = (hex) => {
+        let hex_color = hex
+        hex_color = hex_color.replace("#", "")
+        let red = parseInt(hex_color.substring(0, 2), 16)
+        let green = parseInt(hex_color.substring(2, 4), 16)
+        let blue = parseInt(hex_color.substring(4, 6), 16)
+        return {r: red, g: green, b: blue}
+
+        // const reg = new RegExp(`/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/`)
+        // const result = reg.exec(hex);
+        // console.log(result)
+        // return result ? {
+        //     r: parseInt(result[1], 16),
+        //     g: parseInt(result[2], 16),
+        //     b: parseInt(result[3], 16)
+        //   } : null;
+
+
+
+        // amongus = result ? {
+        //   r: parseInt(result[1], 16),
+        //   g: parseInt(result[2], 16),
+        //   b: parseInt(result[3], 16)
+        // } : null;
+        // console.log(amongus)
+        // return amongus
+      };
+    // console.log(hexToRgb("FFFFFF"))
+    //   `#${color}`
+    // `rgba(${color.hexToRgb.r}, ${color.hexToRgb.g}, ${color.hexToRgb.b}, 0.8)`
     return (
         <div style={{ top: '0', zIndex: '1' }}>
             <motion.div
@@ -40,7 +70,7 @@ const Animal = (props) => {
                 animate={{ opacity: hasBeenInView ? 1 : 0 }}
                 transition={{ delay: 0.25, duration: 1 }}
             >
-                <Container fluid style={{ backgroundColor: `#${color}`, borderRadius: '20px', maxWidth: '90vw' }}>
+                <Container fluid style={{ backgroundColor: `rgba(${hexToRgb(color).r}, ${hexToRgb(color).g}, ${hexToRgb(color).b}, 0.7)`, borderRadius: '20px', maxWidth: '90vw' }}>
                     <Row className="d-flex justify-content-center align-items-center" style={{ margin: '30px', paddingBlock: '30px' }}>
                         <Col sm={4} className="d-flex justify-content-center">
                             <div style={{ width: '400px', height: '300px', overflow: 'hidden', borderRadius: '50%' , borderColor: `#${highlightColor}`, border: '5px solid' }}>

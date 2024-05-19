@@ -27,21 +27,33 @@ const Login = () => {
             console.log(response)})
     }
 
+    const hexToRgb = (hex) => {
+        let hex_color = hex
+        hex_color = hex_color.replace("#", "")
+        let red = parseInt(hex_color.substring(0, 2), 16)
+        let green = parseInt(hex_color.substring(2, 4), 16)
+        let blue = parseInt(hex_color.substring(4, 6), 16)
+        return {r: red, g: green, b: blue}
+    }
+
+    const rgb = hexToRgb("#F5E0FF")
+    // `rgba(${hexToRgb(color).r}, ${hexToRgb(color).g}, ${hexToRgb(color).b}, 0.7)`
+    // "#F5E0FF"
     return (
-        <div class='bottom-section'>
+        <div className='bottom-section'>
         <Container fluid className="d-flex vh-100" style={{ width: '100vw'}}>
             
             <Row className="m-auto w-100">
-                <Col xs={10} md={8} lg={6} className="d-flex flex-column align-items-center mx-auto" style={{ maxWidth: '500px' , backgroundColor: "#F5E0FF", padding: "50px", borderRadius: "10px"}}>
+                <Col xs={10} md={8} lg={6} className="d-flex flex-column align-items-center mx-auto" style={{ maxWidth: '500px' , backgroundColor: `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.7)`, padding: "50px", borderRadius: "10px"}}>
                     <h1 style={{ fontSize: '3rem', marginBottom: '2rem' }}>Log in</h1>
                     <Form className="w-100">
                         <Form.Group controlId="exampleForm.ControlInput1" style={{marginBottom: "20px"}}>
                             <Form.Label>Email</Form.Label>
-                            <Form.Control type="email" placeholder="name@example.com" />
+                            <Form.Control type="email" placeholder="ex. name@example.com" />
                         </Form.Group>
                         <Form.Group controlId="exampleForm.ControlInput2">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" placeholder="password123" />
+                            <Form.Control type="password" placeholder="ex. password123" />
                         </Form.Group>
                         <div className="d-flex justify-content-center">
                             <Link to="/">
