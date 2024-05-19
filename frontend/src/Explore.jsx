@@ -6,7 +6,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 import React, { useState, useEffect } from 'react';
 
 const Explore = () => {
-    let animals = [{"name":"Fu Bao","location":"Seoul, South Korea","type":"Panda","description":"Fu Bao my goat ","donationGoal":"$12000","currentDonation":"$6300","thumbnail":"panda.jpg"}]
+    let animals = []
+    const [imageSrc, setImageSrc] = useState([]);
 
     // Initialize basic info when screen loaded
     useEffect(() => {
@@ -15,6 +16,7 @@ const Explore = () => {
                 const response = await loadBasicInfo()
                 animals=response.animals
                 console.log(animals)
+                loadThumbnails()
             } catch (error) {
                 console.log(error)
             }
@@ -24,12 +26,50 @@ const Explore = () => {
 
     const loadBasicInfo = async () => {
         try {
-            const { data } = await axios.get('http://localhost:5000/getAnimalsAdvanced')
+            const { data } = await axios.get('http://localhost:5000/getAnimalsInfo')
             return data
         } catch (error) {
             console.log(error)
         }
     }
+
+    const loadThumbnails = async () => {
+        for (let i = 0; i < animals.length; i++) {
+            getThumbnailFromIndex(i)
+        }
+    }
+
+    const getThumbnailFromIndex = async (index) => {
+        try {
+            const curAnimal = animals[index]
+            console.log(curAnimal)
+            const { thumbnail } = curAnimal
+            const response = await axios.post('http://localhost:5000/getThumbnail', {thumbnail: thumbnail})
+            
+            // console.log(response.data)
+
+            setImageSrc(prevState => [...prevState, response.data]);
+            // setImageSrc(imageSrc.push(response.data)) // Update state with the image URL
+            // console.log(imageSrc)
+            
+        } catch (error) {
+            console.log(error.response.data)
+        }
+    }
+
+    const searchHandler = (event) => {
+        // console.log(event.target.value)
+        let input = event.target.value.toLowerCase()
+        console.log(input)
+
+        for (let i = 0; i < animals.length; i++) {
+
+        }
+    }
+
+    useEffect(() => {
+        console.log(imageSrc);
+    }, [imageSrc]);
 
     return (
         <Container className="fluid">
@@ -41,7 +81,7 @@ const Explore = () => {
                     <Form className="w-100">
                         <Form.Group controlId="exampleForm.ControlInput1">
                             <Form.Label style={{marginTop: 100, marginBottom: 30, fontSize: 40, fontWeight: "bold", width: "200px"}}>Explore!</Form.Label>
-                            <Form.Control type="search" placeholder="Search" />
+                            <Form.Control onChange={searchHandler} type="search" placeholder="Search" />
                             <div style={{marginBottom:40}}></div>
                         </Form.Group>
                     </Form>
