@@ -90,7 +90,7 @@ const Animal = (props) => {
                             <Row className="m-5">
                                 <ProgressBar now={60} />
                             </Row>
-                            <Row style={{ paddingBlock: '20px' }}>
+                            <Row style={{ paddingBlock: '40px' }}>
                                 <h3>Begin a conversation with {name}!</h3>
                                 <Chatbox name={name} animal={animal}/>
                             </Row>
