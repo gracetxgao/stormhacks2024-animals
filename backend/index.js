@@ -2,6 +2,7 @@ const express = require('express')
 const path = require('path')
 const fs = require('fs')
 const cors = require('cors')
+const multer = require('multer');
 
 const app = express()
 
@@ -73,6 +74,67 @@ app.post('/login', (req, res) => {
         return res.status(401).send('no user exists with that name')
     })
 })
+
+app.post('/addAnimal', async (req, res) => {
+    const {name, location, type, description, donationGoal} = req.body
+    // console.log(name, location, type, description)
+    let animalsBasicSuccess = false
+    let animalsAdvancedSuccess = false
+
+    fs.readFile('assets/animalsBasic.json', 'utf8', (err, data) => {
+        if (err) {
+            return res.status(404).send('animalsBasic.json file not found')
+        }
+    
+        const parsed = JSON.parse(data)
+
+        parsed.animals.push({name, location, type, description})
+        // console.log(parsed)
+        const toAdd = parsed
+        // console.log(toAdd)
+        // console.log(JSON.stringify(toAdd))
+        // fs.writeFile('assets/animalsBasic.json', JSON.stringify(toAdd), () => {})
+    })
+    fs.readFile('assets/animalsAdvanced.json', 'utf8', (err, data) => {
+        if (err) {
+            return res.status(404).send('animalsAdvanced.json file not found')
+        }
+    
+        const parsed = JSON.parse(data)
+
+        parsed.animals.push({name, location, type, description, donationGoal})
+        // console.log(parsed)
+        const toAdd = parsed
+        // console.log(toAdd)
+        // console.log(JSON.stringify(toAdd))
+        // fs.writeFile('assets/animalsAdvanced.json', JSON.stringify(toAdd), () => {})
+    })
+    return res.status(200).send('adding animal information successful')
+})
+
+// Set up multer for file storage
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        const dir = path.join(__dirname, 'assets/thumbnails');
+        if (!fs.existsSync(dir)){
+            fs.mkdirSync(dir, { recursive: true });
+        }
+        cb(null, dir);
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.originalname);
+    }
+});
+  
+const upload = multer({ storage });
+
+app.post('/uploadThumbnail', upload.single('file'), (req, res) => {
+    if (!req.file) {
+      return res.status(400).json({ message: 'No file uploaded' });
+    }
+    
+    res.status(200).json({ message: 'File uploaded successfully', fileName: req.file.originalname });
+});
 
 app.listen(5000, () => {
     console.log('Server started on http://localhost:5000')
