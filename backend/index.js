@@ -76,7 +76,7 @@ app.post('/login', (req, res) => {
 })
 
 app.post('/addAnimal', async (req, res) => {
-    const {name, location, type, description, donationGoal} = req.body
+    const {name, location, type, description, donationGoal, thumbNail} = req.body
     // console.log(name, location, type, description)
     let animalsBasicSuccess = false
     let animalsAdvancedSuccess = false
@@ -88,7 +88,7 @@ app.post('/addAnimal', async (req, res) => {
     
         const parsed = JSON.parse(data)
 
-        parsed.animals.push({name, location, type, description})
+        parsed.animals.push({name, location, type, description, thumbNail})
         // console.log(parsed)
         const toAdd = parsed
         // console.log(toAdd)
@@ -102,7 +102,7 @@ app.post('/addAnimal', async (req, res) => {
     
         const parsed = JSON.parse(data)
 
-        parsed.animals.push({name, location, type, description, donationGoal})
+        parsed.animals.push({name, location, type, description, donationGoal, thumbNail})
         // console.log(parsed)
         const toAdd = parsed
         // console.log(toAdd)
