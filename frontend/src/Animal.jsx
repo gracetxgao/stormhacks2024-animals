@@ -4,10 +4,12 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import ProgressBar from 'react-bootstrap/ProgressBar';
+import Chat from './Chat';
+import Chatbox from './Chatbox';
 import { motion, useInView } from 'framer-motion';
 
 const Animal = (props) => {
-    const { name, location, image, color } = props;
+    const { name, location, image, color, animal } = props;
     const [expand, setExpand] = useState(false);
     const [hasBeenInView, setHasBeenInView] = useState(false);
     const ref = useRef(null);
@@ -66,6 +68,7 @@ const Animal = (props) => {
                             <Row className="m-5">
                                 <ProgressBar now={60} />
                             </Row>
+                        <Chatbox name={name} animal={animal}/>
                         </div>
                     )}
                 </Container>
