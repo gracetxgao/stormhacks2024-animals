@@ -86,27 +86,27 @@ const Chatbox = (props) => {
 
     return (
         <div className="App">
-        <div style={{ position:"relative", height: "300px", width: "700px"  }}>
-            <MainContainer>
-            <ChatContainer>       
-                <MessageList 
-                scrollBehavior="smooth" 
-                typingIndicator={isTyping ? <TypingIndicator content="Typing..." /> : null}
-                >
-                {messages.map((m, i) => {
-                    console.log(m)
-                    return (
-                        <Message 
-                            key={i} 
-                            model={m} 
-                        />
-                    );
-                })}
-                </MessageList>
-                <MessageInput placeholder="Type message here" onSend={handleSend} />        
-            </ChatContainer>
-            </MainContainer>
-        </div>
+            <div style={{ position:"relative", height: "300px", width: "700px"  }}>
+                <MainContainer>
+                <ChatContainer>       
+                    <MessageList 
+                    scrollBehavior="smooth" 
+                    typingIndicator={isTyping ? <TypingIndicator content="Typing..." /> : null}
+                    >
+                    {messages.map((m, i) => {
+                        console.log(m)
+                        return (
+                            <Message 
+                                key={i} 
+                                model={m} 
+                            />
+                        );
+                    })}
+                    </MessageList>
+                    <MessageInput placeholder="Type message here" onSend={handleSend} />        
+                </ChatContainer>
+                </MainContainer>
+            </div>
         </div>
     )
 }
