@@ -75,8 +75,8 @@ app.post('/login', (req, res) => {
 })
 
 app.post('/addAnimal', async (req, res) => {
-    const {name, location, type, description, donationGoal, currentDonations, thumbNail} = req.body
-    // console.log(name, location, type, description, donationGoal, currentDonations, thumbNail)
+    const {name, location, type, description, donationGoal, currentDonations, thumbnail} = req.body
+    console.log(name, location, type, description, donationGoal, currentDonations, thumbnail)
 
     fs.readFile('assets/animalsInfo.json', 'utf8', (err, data) => {
         if (err) {
@@ -85,7 +85,7 @@ app.post('/addAnimal', async (req, res) => {
     
         const parsed = JSON.parse(data)
 
-        parsed.animals.push({name, location, type, description, donationGoal, currentDonations, thumbNail})
+        parsed.animals.push({name, location, type, description, donationGoal, currentDonations, thumbnail})
         // console.log(parsed)
         const toAdd = parsed
         console.log(toAdd)
