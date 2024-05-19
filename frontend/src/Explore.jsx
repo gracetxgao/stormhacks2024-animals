@@ -36,7 +36,7 @@ const Explore = () => {
 
     const loadBasicInfo = async () => {
         try {
-            const { data } = await axios.get('http://localhost:5000/getAnimalsInfo')
+            const { data } = await axios.get('http://localhost:5001/getAnimalsInfo')
             return data
         } catch (error) {
             console.log(error)
@@ -54,9 +54,9 @@ const Explore = () => {
             const curAnimal = animals[index]
             console.log(curAnimal)
             const { thumbnail } = curAnimal
-            const response = await axios.post('http://localhost:5000/getThumbnail', {thumbnail: thumbnail})
+            const response = await axios.post('http://localhost:5001/getThumbnail', {thumbnail: thumbnail})
             
-            // console.log(response.data)
+            console.log(response.data)
 
             setImageSrc(prevState => [...prevState, response.data]);
             // setImageSrc(imageSrc.push(response.data)) // Update state with the image URL
