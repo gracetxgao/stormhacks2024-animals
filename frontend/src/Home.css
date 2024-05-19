@@ -29,6 +29,7 @@ body {
     left: 0;
   }
 
-  .navbar-custom {
-    color: green;
-  }
+  .bg-dark {
+    --bs-bg-opacity: 1;
+    background-color: rgba(245, 219, 219) !important;
+}

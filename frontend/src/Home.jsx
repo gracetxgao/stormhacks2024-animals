@@ -61,7 +61,7 @@ const Home = () => {
                 />
             </div>
             {zoomCompleted && (
-                <nav className="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+                <nav className="navbar navbar-expand-sm bg-dark navbar-dark sticky-top" style={{backgroundColor: "#f5dbdb !important"}}>
                     <div className="container-fluid">
                         <Link className="navbar-brand" to="#">Sticky top</Link>
                     </div>
