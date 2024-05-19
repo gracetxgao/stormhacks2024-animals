@@ -118,7 +118,7 @@ const Animal = (props) => {
                                 </Col>
                             </Row>
                             <Row className="m-5">
-                                <ProgressBar now={60} />
+                                <ProgressBar now={100 * (currentDonation/donationGoal)} />
                             </Row>
                             <Row style={{ paddingBlock: '40px' }}>
                                 <h3>Begin a conversation with {name}!</h3>

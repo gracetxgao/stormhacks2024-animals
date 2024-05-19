@@ -56,7 +56,7 @@ const Login = () => {
                             <Form.Control type="password" placeholder="ex. password123" />
                         </Form.Group>
                         <div className="d-flex justify-content-center">
-                            <Link to="/">
+                            <Link to="/explore">
                                 <motion.button 
                                  whileHover = {{scale : 1.05, backgroundColor: "#F5F5F5"}}
                                  whileTap = {{scale: 0.95}}
