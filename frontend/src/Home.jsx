@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { motion, useAnimation } from 'framer-motion';
 import 'bootstrap/dist/css/bootstrap.css';
 import './Home.css';
+import Explore from './Explore';
 
 const Home = () => {
     const controls = useAnimation();
@@ -66,17 +67,7 @@ const Home = () => {
                     </div>
                 </nav>
             )}
-            <div className="container mt-3">
-                <h3>Sticky Navbar</h3>
-                <p>A sticky navigation bar stays fixed at the top of the page when you scroll past it.</p>
-                <p>Scroll this page to see the effect. <strong>Note:</strong> sticky-top does not work in IE11 and earlier.</p>
-            </div>
-            <div className="container-fluid">
-                <p>Some example text. Some example text. Some example text. Some example text. Some example text.</p>
-                <p>Some example text. Some example text. Some example text. Some example text. Some example text.</p>
-                <p>Some example text. Some example text. Some example text. Some example text. Some example text.</p>
-                <p>Some example text. Some example text. Some example text. Some example text. Some example text.</p>
-            </div>
+            <Explore />
         </>
     );
 };

@@ -24,7 +24,6 @@ const Explore = () => {
 
     return (
         <Container className="fluid">
-            <p>explore</p>
             <Form className="w-100">
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Search</Form.Label>
