@@ -41,9 +41,9 @@ const Animal = (props) => {
                 transition={{ delay: 0.25, duration: 1 }}
             >
                 <Container fluid style={{ backgroundColor: `#${color}`, borderRadius: '20px', maxWidth: '90vw' }}>
-                    <Row className="d-flex justify-content-center align-items-center" style={{ margin: '30px' }}>
+                    <Row className="d-flex justify-content-center align-items-center" style={{ margin: '30px', paddingBlock: '30px' }}>
                         <Col sm={4} className="d-flex justify-content-center">
-                            <div style={{ width: '400px', height: '400px', overflow: 'hidden', borderRadius: '50%' }}>
+                            <div style={{ width: '400px', height: '300px', overflow: 'hidden', borderRadius: '50%' }}>
                                 <img src={image} alt={name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                             </div>
                         </Col>
@@ -62,7 +62,7 @@ const Animal = (props) => {
                                 </Row>
                                 <Row style={{ margin: '5%'}}>Fu Bao, born on July 20, 2020, at Everland Resort in South Korea, is the country's first giant panda. Beloved for her playful antics and charming personality, her name means "a treasure that brings happiness."</Row>
                             </Container>                         
-                            <motion.button onClick={handleSeeAll}
+                            <motion.button onClick={handleSeeAll} style={{ backgroundColor: '#CCE2F8', color: 'black' }}
                             whileHover = {{scale : 1.05}} whileTap = {{scale : 0.95, rotate : "2.5deg"}} className="animate-button">{expand ? 'Close' : 'See All'}</motion.button>
                         </Col>
                     </Row>
@@ -88,7 +88,7 @@ const Animal = (props) => {
                             <Row className="m-5">
                                 <ProgressBar now={60} />
                             </Row>
-                            <Row style={{ padding: '3%' }}>
+                            <Row style={{ paddingBlock: '20px' }}>
                                 <h3>Begin a conversation with {name}!</h3>
                                 <Chatbox name={name} animal={animal}/>
                             </Row>
