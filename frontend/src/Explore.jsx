@@ -120,8 +120,8 @@ const Explore = () => {
                 <div className="col-sm-10" align="center">
                     <Form className="w-100">
                         <Form.Group controlId="exampleForm.ControlInput1">
-                            <Form.Label style={{marginTop: 100, marginBottom: 30, fontSize: 40, fontWeight: "bold"}}>Explore!</Form.Label>
-                            <Form.Control type="email" placeholder="ex. panda" />
+                            <Form.Label style={{marginTop: 100, marginBottom: 30, fontSize: 40, fontWeight: "bold", width: "200px"}}>Explore!</Form.Label>
+                            <Form.Control type="search" placeholder="Search" />
                             <div style={{marginBottom:40}}></div>
                         </Form.Group>
                         {animalCards}

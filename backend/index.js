@@ -20,24 +20,12 @@ app.get('/getAnimalsBasic', (req, res) => {
 })
 
 app.get('/getAnimalsAdvanced', (req, res) => {
-    const index = req.body
-
-    fs.readFile('assets/animalsAdvanced.json', 'utf8', (err, data) => {
+    fs.readFile(path.resolve(__dirname, 'assets/animalsAdvanced.json'), 'utf8', (err, data) => {
         if (err) {
             return res.status(404).send('animalsAdvanced.json file not found')
         }
-
-        const parsed = JSON.parse(data)
-
-        if (undefined == parsed) {
-            return res.status(404).send('no file contents in animalsAdvanced.json!')
-        }
-
-        if (parsed[index] == undefined) {
-            return res.status(404).send('animal not found!')
-        }
-
-        return res.status(200).send(parsed)
+        // console.log(data)
+        return res.status(200).send(data)
     })
 })
 
@@ -88,8 +76,8 @@ app.post('/login', (req, res) => {
 })
 
 app.post('/addAnimal', async (req, res) => {
-    const {name, location, type, description, donationGoal, thumbNail} = req.body
-    // console.log(name, location, type, description)
+    const {name, location, type, description, donationGoal, currentDonations, thumbNail} = req.body
+    console.log(name, location, type, description, donationGoal, currentDonations, thumbNail)
     let animalsBasicSuccess = false
     let animalsAdvancedSuccess = false
 
@@ -105,7 +93,7 @@ app.post('/addAnimal', async (req, res) => {
         const toAdd = parsed
         // console.log(toAdd)
         // console.log(JSON.stringify(toAdd))
-        // fs.writeFile('assets/animalsBasic.json', JSON.stringify(toAdd), () => {})
+        fs.writeFile('assets/animalsBasic.json', JSON.stringify(toAdd), () => {})
     })
     fs.readFile('assets/animalsAdvanced.json', 'utf8', (err, data) => {
         if (err) {
@@ -114,12 +102,12 @@ app.post('/addAnimal', async (req, res) => {
     
         const parsed = JSON.parse(data)
 
-        parsed.animals.push({name, location, type, description, donationGoal, thumbNail})
+        parsed.animals.push({name, location, type, description, donationGoal, currentDonations, thumbNail})
         // console.log(parsed)
         const toAdd = parsed
-        // console.log(toAdd)
+        console.log(toAdd)
         // console.log(JSON.stringify(toAdd))
-        // fs.writeFile('assets/animalsAdvanced.json', JSON.stringify(toAdd), () => {})
+        fs.writeFile('assets/animalsAdvanced.json', JSON.stringify(toAdd), () => {})
     })
     return res.status(200).send('adding animal information successful')
 })
