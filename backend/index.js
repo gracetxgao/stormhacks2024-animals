@@ -7,21 +7,15 @@ const app = express()
 
 app.use(cors())
 
-app.get('*', (req, res) => {
-    res.status(404).send("error")
-})
-
 app.get('/getAnimalsBasic', (req, res) => {
-    fs.readFile('assets/animalsBasic.json', 'utf8', (err, data) => {
+    // console.log('here')
+    fs.readFile(path.resolve(__dirname, 'assets/animalsBasic.json'), 'utf8', (err, data) => {
         if (err) {
-            res.status(404).send('animalsBasic.json file not found')
+            return res.status(404).send('animalsBasic.json file not found')
         }
-    
-        const parsed = JSON.parse(data)
-
-        return res.status(200).send(parsed)
+        // console.log(data)
+        return res.status(200).send(data)
     })
-    return res.status(400).send('error')
 })
 
 app.get('/getThumbnail', (req, res) => {
@@ -51,13 +45,17 @@ app.get('/getAnimalsAdvanced', (req, res) => {
     })
 })
 
-// For non get reqs
+app.get('*', (req, res) => {
+    res.status(404).send("error")
+})
+
+// For non get commands
 app.use(express.urlencoded({extended: false}))
 app.use(express.json())
 
 app.post('/login', (req, res) => {
-    const name = req.body
-
+    const name = req.body.name
+    console.log(name)
     fs.readFile('assets/users.json', 'utf8', (err, data) => {
         if (err) {
             res.status(404).send('users.json file not found')
@@ -67,7 +65,7 @@ app.post('/login', (req, res) => {
 
         // console.log(parsed)
         for (let i = 0; i < parsed.length; i++) {
-            if (name === parsed[i]) {
+            if (name === parsed[i].name) {
                 return res.status(200).send('login successful')
             }
         }
