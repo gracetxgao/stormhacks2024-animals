@@ -9,7 +9,7 @@ import { animate, motion, useInView } from 'framer-motion';
 import locationImage from '../src/assets/location.png';
 
 const Animal = (props) => {
-    const { name, location, image, color, highlightColor, animal } = props;
+    const { name, location, image, color, highlightColor, animal, description, donationGoal, currentDonation} = props;
     const [expand, setExpand] = useState(false);
     const [hasBeenInView, setHasBeenInView] = useState(false);
     const ref = useRef(null);
@@ -60,7 +60,7 @@ const Animal = (props) => {
                                         </h3>
                                     </Col>
                                 </Row>
-                                <Row style={{ margin: '5%'}}>Fu Bao, born on July 20, 2020, at Everland Resort in South Korea, is the country's first giant panda. Beloved for her playful antics and charming personality, her name means "a treasure that brings happiness."</Row>
+                                <Row style={{ margin: '5%'}}>{description}</Row>
                             </Container>                         
                             <motion.button onClick={handleSeeAll} style={{ backgroundColor: 'white', color: `#${highlightColor}`, borderColor: `#${highlightColor}`, border: "4px solid", borderRadius: "15px"}}
                             whileHover = {{scale : 1.05, backgroundColor: "#F5F5F5"}} whileTap = {{scale : 0.95, rotate : "2.5deg"}} className="animate-button">{expand ? 'Close' : 'See All'}</motion.button>

@@ -95,8 +95,7 @@ const AddAnimal = () => {
                             <Form.Label>Current donations</Form.Label>
                             <Form.Control type="description" placeholder="ex. $2500" />  
                         </Form.Group>
-                        <Form.Group controlId="exampleForm.ControlInput7">
-                        <Form.Group controlId="exampleForm.ControlInput6" style={{marginBottom: "15px"}}>
+                        <Form.Group controlId="exampleForm.ControlInput7" style={{marginBottom: "15px"}}>
                             <input type='file' className="thumbnail" onChange={handleFileChange} />
                         </Form.Group>
                         <div className="d-flex justify-content-center">
