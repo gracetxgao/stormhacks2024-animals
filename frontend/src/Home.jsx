@@ -1,4 +1,4 @@
-import Picture1 from '../public/zooImage1.png';
+import Picture1 from './zooImage1.png';
 
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -6,6 +6,7 @@ import { motion, useAnimation } from 'framer-motion';
 import 'bootstrap/dist/css/bootstrap.css';
 import './Home.css';
 import Explore from './Explore';
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
     const controls = useAnimation();
@@ -17,7 +18,7 @@ const Home = () => {
             if (!zoomCompleted) {
                 event.preventDefault();
                 const deltaY = event.deltaY;
-                if (deltaY > 0) { // Only handle positive scroll
+                if (deltaY > 0) { 
                     setZoomFactor(prevZoomFactor => {
                         const newZoomFactor = Math.min(prevZoomFactor + deltaY / (window.innerHeight / 2), 4);
                         controls.start({
@@ -29,7 +30,7 @@ const Home = () => {
                         }
                         return newZoomFactor;
                     });
-                    window.scrollTo(0, 0); // Keep the page from scrolling
+                    window.scrollTo(0, 0); 
                 }
             }
         };
@@ -49,6 +50,11 @@ const Home = () => {
         }
     }, [zoomCompleted]);
 
+    const navigate = useNavigate()
+    const gotToNewPage=()=>{
+        navigate("/Login");
+      }
+
     return (
         <>
             <div className="fullscreen-bg">
@@ -64,10 +70,14 @@ const Home = () => {
                 <nav className="navbar navbar-expand-sm bg-dark navbar-dark sticky-top" style={{backgroundColor: "#f5dbdb !important"}}>
                     <div className="container-fluid">
                         <Link className="navbar-brand" to="#">Sticky top</Link>
+                        <motion.button class="login-button" onClick={() => gotToNewPage()}
+                            whileHover = {{scale : 1.05}} whileTap = {{scale : 0.95}}
+                        >Login</motion.button>
                     </div>
                 </nav>
             )}
             <Explore />
+            
         </>
     );
 };
