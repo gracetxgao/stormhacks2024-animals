@@ -1,12 +1,17 @@
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./Home";
+import Animals from "./Animals";
 
-function App() {
-
+const App = () => {
   return (
-    <>
-      <p>hello???</p>
-    </>
-  )
-}
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/animals" element={<Animals />} />
+      </Routes>
+    </Router>
+  );
+};
 
-export default App
+export default App;
+
