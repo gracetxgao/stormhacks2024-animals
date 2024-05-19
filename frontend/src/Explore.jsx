@@ -24,10 +24,20 @@ const Explore = () => {
 
     const loadBasicInfo = async () => {
         try {
-            const { data } = await axios.get('http://localhost:5000/getAnimalsAdvanced')
+            const { data } = await axios.get('http://localhost:5000/getAnimalsInfo')
             return data
         } catch (error) {
             console.log(error)
+        }
+    }
+
+    const searchHandler = (event) => {
+        // console.log(event.target.value)
+        let input = event.target.value.toLowerCase()
+        console.log(input)
+
+        for (let i = 0; i < animals.length; i++) {
+
         }
     }
 
@@ -39,7 +49,7 @@ const Explore = () => {
                     <Form className="w-100">
                         <Form.Group controlId="exampleForm.ControlInput1">
                             <Form.Label style={{marginTop: 100, marginBottom: 30, fontSize: 40, fontWeight: "bold", width: "200px"}}>Explore!</Form.Label>
-                            <Form.Control type="search" placeholder="Search" />
+                            <Form.Control onChange={searchHandler} type="search" placeholder="Search" />
                             <div style={{marginBottom:40}}></div>
                         </Form.Group>
                     </Form>

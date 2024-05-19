@@ -8,21 +8,10 @@ const app = express()
 
 app.use(cors())
 
-app.get('/getAnimalsBasic', (req, res) => {
-    // console.log('here')
-    fs.readFile(path.resolve(__dirname, 'assets/animalsBasic.json'), 'utf8', (err, data) => {
+app.get('/getAnimalsInfo', (req, res) => {
+    fs.readFile(path.resolve(__dirname, 'assets/animalsInfo.json'), 'utf8', (err, data) => {
         if (err) {
-            return res.status(404).send('animalsBasic.json file not found')
-        }
-        // console.log(data)
-        return res.status(200).send(data)
-    })
-})
-
-app.get('/getAnimalsAdvanced', (req, res) => {
-    fs.readFile(path.resolve(__dirname, 'assets/animalsAdvanced.json'), 'utf8', (err, data) => {
-        if (err) {
-            return res.status(404).send('animalsAdvanced.json file not found')
+            return res.status(404).send('animalsInfo.json file not found')
         }
         // console.log(data)
         return res.status(200).send(data)
@@ -77,27 +66,11 @@ app.post('/login', (req, res) => {
 
 app.post('/addAnimal', async (req, res) => {
     const {name, location, type, description, donationGoal, currentDonations, thumbNail} = req.body
-    console.log(name, location, type, description, donationGoal, currentDonations, thumbNail)
-    let animalsBasicSuccess = false
-    let animalsAdvancedSuccess = false
+    // console.log(name, location, type, description, donationGoal, currentDonations, thumbNail)
 
-    fs.readFile('assets/animalsBasic.json', 'utf8', (err, data) => {
+    fs.readFile('assets/animalsInfo.json', 'utf8', (err, data) => {
         if (err) {
-            return res.status(404).send('animalsBasic.json file not found')
-        }
-    
-        const parsed = JSON.parse(data)
-
-        parsed.animals.push({name, location, type, description, thumbNail})
-        // console.log(parsed)
-        const toAdd = parsed
-        // console.log(toAdd)
-        // console.log(JSON.stringify(toAdd))
-        fs.writeFile('assets/animalsBasic.json', JSON.stringify(toAdd), () => {})
-    })
-    fs.readFile('assets/animalsAdvanced.json', 'utf8', (err, data) => {
-        if (err) {
-            return res.status(404).send('animalsAdvanced.json file not found')
+            return res.status(404).send('animalsInfo.json file not found')
         }
     
         const parsed = JSON.parse(data)
@@ -107,7 +80,7 @@ app.post('/addAnimal', async (req, res) => {
         const toAdd = parsed
         console.log(toAdd)
         // console.log(JSON.stringify(toAdd))
-        fs.writeFile('assets/animalsAdvanced.json', JSON.stringify(toAdd), () => {})
+        fs.writeFile('assets/animalsInfo.json', JSON.stringify(toAdd), () => {})
     })
     return res.status(200).send('adding animal information successful')
 })
