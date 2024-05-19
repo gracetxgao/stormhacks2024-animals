@@ -1,11 +1,15 @@
-import Button from 'react-bootstrap/esm/Button';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
     return (
         <>
-            <p>home</p>
-            <Link to="/animals"><Button>animals</Button></Link>
+            <Container fluid>
+                <p>home</p>
+                <Link to="/animals"><Button>scroll down animals</Button></Link>
+            </Container>
+            
         </>
     )
 }
