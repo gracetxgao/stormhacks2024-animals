@@ -86,7 +86,7 @@ const Chatbox = (props) => {
 
     return (
         <div className="App">
-            <div style={{ position:"relative", height: "300px", width: "700px", boxShadow: "5px 5px 0px 0px black" }}>
+            <div style={{ position:"relative", height: "300px", width: "700px", boxShadow: "5px 5px 0px 0px rgb(173, 201, 225)" }}>
                 <MainContainer>
                 <ChatContainer>       
                     <MessageList 
