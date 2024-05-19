@@ -32,8 +32,18 @@ app.post('/getThumbnail', (req, res) => {
     const filePath = path.resolve(__dirname, "assets/thumbnails", thumbnail)
     // console.log(filePath)
 
-    return res.sendFile(filePath)
+    fs.readFile(filePath, (err, data) => {
+        if (err) {
+            return res.status(404).send('file not found');
+        }
+        // console.log('a')
+        const base64Image = Buffer.from(data).toString('base64');
+        // console.log('a')
+        // console.log(base64Image)
 
+        return res.status(200).send(base64Image)
+    })
+    // return res.status(400).send()
     // const r = fs.createReadStream(filePath)
     // const ps = new stream.PassThrough()
     // stream.pipeline(r, ps, (err) => {

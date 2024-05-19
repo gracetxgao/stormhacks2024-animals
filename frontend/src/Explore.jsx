@@ -7,6 +7,7 @@ import React, { useState, useEffect } from 'react';
 
 const Explore = () => {
     let animals = []
+    const [imageSrc, setImageSrc] = useState([]);
 
     // Initialize basic info when screen loaded
     useEffect(() => {
@@ -15,6 +16,7 @@ const Explore = () => {
                 const response = await loadBasicInfo()
                 animals=response.animals
                 console.log(animals)
+                loadThumbnails()
             } catch (error) {
                 console.log(error)
             }
@@ -31,6 +33,30 @@ const Explore = () => {
         }
     }
 
+    const loadThumbnails = async () => {
+        for (let i = 0; i < animals.length; i++) {
+            getThumbnailFromIndex(i)
+        }
+    }
+
+    const getThumbnailFromIndex = async (index) => {
+        try {
+            const curAnimal = animals[index]
+            console.log(curAnimal)
+            const { thumbnail } = curAnimal
+            const response = await axios.post('http://localhost:5000/getThumbnail', {thumbnail: thumbnail})
+            
+            // console.log(response.data)
+
+            setImageSrc(prevState => [...prevState, response.data]);
+            // setImageSrc(imageSrc.push(response.data)) // Update state with the image URL
+            // console.log(imageSrc)
+            
+        } catch (error) {
+            console.log(error.response.data)
+        }
+    }
+
     const searchHandler = (event) => {
         // console.log(event.target.value)
         let input = event.target.value.toLowerCase()
@@ -40,6 +66,10 @@ const Explore = () => {
 
         }
     }
+
+    useEffect(() => {
+        console.log(imageSrc);
+    }, [imageSrc]);
 
     return (
         <Container className="fluid">
