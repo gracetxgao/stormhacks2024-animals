@@ -2,6 +2,7 @@ import axios from 'axios'
 import Form from 'react-bootstrap/Form';
 import Animal from "./Animal"
 import Container from 'react-bootstrap/Container';
+import 'bootstrap/dist/css/bootstrap.css';
 
 const Explore = () => {
     let animals = []
@@ -22,7 +23,7 @@ const Explore = () => {
     }
 
     return (
-        <Container fluid>
+        <div className="fluid">
             <p>explore</p>
             <Form className="w-100">
                 <Form.Group controlId="exampleForm.ControlInput1">
