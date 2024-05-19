@@ -91,11 +91,12 @@ const AddAnimal = () => {
                             <Form.Label>Donation goal</Form.Label>
                             <Form.Control type="description" placeholder="ex. $3500" />    
                         </Form.Group>
-                        <Form.Group controlId="exampleForm.ControlInput6">
+                        <Form.Group controlId="exampleForm.ControlInput6" style={{marginBottom: "15px"}}>
                             <Form.Label>Current donations</Form.Label>
                             <Form.Control type="description" placeholder="ex. $2500" />  
                         </Form.Group>
                         <Form.Group controlId="exampleForm.ControlInput7" style={{marginBottom: "15px"}}>
+                            <Form.Label>Attach image below</Form.Label>
                             <input type='file' className="thumbnail" onChange={handleFileChange} />
                         </Form.Group>
                         <div className="d-flex justify-content-center">
