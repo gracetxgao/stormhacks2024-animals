@@ -4,7 +4,8 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import ProgressBar from 'react-bootstrap/ProgressBar';
-import { motion, useInView } from 'framer-motion';
+import { animate, motion, useInView, useMotionValue } from 'framer-motion';
+import useMeasure from "react-use-measure";
 
 const Animal = (props) => {
     const { name, location, image, color } = props;
@@ -12,8 +13,14 @@ const Animal = (props) => {
     const [hasBeenInView, setHasBeenInView] = useState(false);
     const ref = useRef(null);
     const isInView = useInView(ref, { once: false });
+    
 
-
+    const Images = [
+        image,
+        image,
+        image,
+        image
+    ]
     const handleSeeAll = () => {
         setExpand(!expand);
     };
@@ -56,10 +63,14 @@ const Animal = (props) => {
                                     initial = {{opacity : 0, height : 0}}
                                     animate = {{opacity : 1, height : "auto"}}
                                     transition={{duration : 0.1}}>
-                                    <img src={image} alt={name} style={{ width: '20%', height: '100%', marginInline: '25px', borderRadius: '10%' }} />
-                                    <img src={image} alt={name} style={{ width: '20%', height: '100%', marginInline: '25px', borderRadius: '10%' }} />
-                                    <img src={image} alt={name} style={{ width: '20%', height: '100%', marginInline: '25px', borderRadius: '10%' }} />
-                                    <img src={image} alt={name} style={{ width: '20%', height: '100%', marginInline: '25px', borderRadius: '10%' }} />
+                                    <div class="slider">
+                                    <div class="slide-track">
+
+                                    {[...Images].map((item, idx) => (
+                                        <img class="slide" src={image} alt={name} style={{ width: '20%', height: '100%', marginInline: '25px', borderRadius: '10%' }} />
+                                    ))}
+                                    </div>
+                                    </div>
                                     </motion.div>
                                 </Col>
                             </Row>
