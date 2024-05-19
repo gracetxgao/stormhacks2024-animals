@@ -29,6 +29,15 @@ const Explore = () => {
         }
     }
 
+    const hexToRgb = (hex) => {
+        let hex_color = hex
+        hex_color = hex_color.replace("#", "")
+        let red = parseInt(hex_color.substring(0, 2), 16)
+        let green = parseInt(hex_color.substring(2, 4), 16)
+        let blue = parseInt(hex_color.substring(4, 6), 16)
+        return {r: red, g: green, b: blue}
+    }
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -140,6 +149,7 @@ const Explore = () => {
     })
 
     return (
+        <div className='bottom-section'>
         <Container className="fluid">
             <div className="row">
                 <div className="col-sm-0"></div>
@@ -158,6 +168,7 @@ const Explore = () => {
             </div>
             </div>
         </Container>
+        </div>
     )
 }
 

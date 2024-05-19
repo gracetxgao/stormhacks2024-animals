@@ -67,7 +67,6 @@ const Login = () => {
                     </Form>
                 </Col>
             </Row>
-            
         </Container>
         </div>
     );
